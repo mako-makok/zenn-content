@@ -95,7 +95,8 @@ Kotlin 1.5 以前は戻り値に指定できないという制約があったの
 標準の`Result`は似たようなことはできるのですが、いくつか問題があります。
 
 ```kotlin
-fun div(a: Int, dividedBy: Int): Result<Int> { // 戻り値がkotlin.Resultは成功値の型の指定しかできないので、失敗値の型が消失する
+fun div(a: Int, dividedBy: Int): Result<Int> {
+    // 戻り値がkotlin.Resultは成功値の型の指定しかできないので、失敗値の型が消失する
     return if (dividedBy == 0) {
         // failureにはThrowableしか投入することができない
         return Result.failure(ArithmeticException())
