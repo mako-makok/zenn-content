@@ -27,7 +27,7 @@ Rust の`Result`や、Scala の `Either` など、関数型の概念を取り入
 
 内部の実装を見てみるとそれらは代数的データ型で実装されています。
 
-```koltin
+```kotlin
 public sealed class Result<out V, out E> { ... }
 public class Ok<out V>(public val value: V) : Result<V, Nothing>() { ... }
 public class Err<out E>(public val error: E) : Result<Nothing, E>() { ... }
