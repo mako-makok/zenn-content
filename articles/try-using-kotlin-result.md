@@ -10,7 +10,12 @@ publication_name: "loglass"
 # はじめに
 
 ログラスの小林([@mako-makok](https://twitter.com/mako_makok))です。
-現在ログラスでは新しい部分を`kotlin-result`というライブラリを用いて、エラーハンドリングを行っています。
+
+この記事は毎週必ず記事がでるテックブログ **["Loglass Tech Blog Sprint"](https://zenn.dev/loglass/articles/7298a3cd4c5fc6)** の **4 週目** の記事です！
+1 年間連続達成まで **残り 49 週** となりました！
+
+Kotlin でのエラーハンドリングの改善に向けて、`kotlin-result`というライブラリを導入したのですが、使い始めて約半年経過しました。
+今回は使ってみて実際にどうだったかを振り返ってみます。
 
 # What kotlin-result
 
