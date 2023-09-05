@@ -3,7 +3,8 @@ title: "kotlin-resultを半年使ってみて"
 emoji: "📑"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["kotlin", "kotlin-result"]
-published: false
+published: true
+published_at: 2023-09-11 12:00
 publication_name: "loglass"
 ---
 
