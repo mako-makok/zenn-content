@@ -280,3 +280,19 @@ class DomainDataClassCannotUseCopyMethod {
 }
 
 ```
+
+このテストメソッドを定義することで copy メソッドの乱用が制限されるため、下記のような interface 定義がより安全になります。
+
+```kotlin
+sealed interface MailAddress {
+    val value: String
+
+    private data class ValidatedMailAddress(
+        override val value: String
+    ): MailAddress
+
+    private data class UnValidatedMailAddress(
+        override val value: String
+    ): MailAddress
+}
+```
