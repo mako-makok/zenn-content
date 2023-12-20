@@ -200,7 +200,10 @@ Kotlin 製のモックライブラリですが、非常に便利です。
 
 #### SpringBoot との相性問題はある
 
-- https://github.com/spring-projects/spring-boot で kotlin で Issue を検索するとちょこちょこある
+- GitHub で kotlin で Issue を検索するといくつかある
+
+https://github.com/spring-projects/spring-boot
+
 - 非同期処理や AOP でバグは何度か実際に踏みました
 
 #### Java に比べて(体感)ビルドが遅い
