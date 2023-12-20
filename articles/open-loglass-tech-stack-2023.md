@@ -7,10 +7,15 @@ published: true
 publication_name: "loglass"
 ---
 
+![](/images/open-loglass-tech-stack-2023.title.png)
+
+:::message
+この記事はログラスアドベントカレンダーの 20 日目の記事です！
+:::
+
 # はじめに
 
 こんにちは、ログラスの小林([@mako-makok](https://twitter.com/mako_makok))です！
-この記事はログラスアドベントカレンダーの 20 日目の記事です！
 
 昨日は[@asa_kossy](https://twitter.com/asa_kossy)さんの[「ログラスのプロダクトマネージャーチームが今年取り組んだこと、いま苦労していること 2023」](https://note.com/asa_kossy/n/nc85eca4a8066)でした。
 
