@@ -428,4 +428,4 @@ Loglass の細かいライブラリ群まで深掘らせていただきました
 「いっちょ直したる！」「そここうすると良くなるから教えてあげてもいいよ」という方がいらっしゃいましたらぜひお話させてください。
 
 https://hrmos.co/pages/loglass/jobs/1813462408235663423
-https://hrmos.co/pages/loglass/jobs/1813462408235663423
+https://hrmos.co/pages/loglass/jobs/B0001
