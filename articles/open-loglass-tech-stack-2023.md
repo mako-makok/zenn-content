@@ -3,7 +3,7 @@ title: "ログラスのバックエンド技術スタック2023"
 emoji: "📑"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["kotlin", "Java", "SpringBoot", "ORM", "OpenAPI"]
-published: false
+published: true
 publication_name: "loglass"
 ---
 
