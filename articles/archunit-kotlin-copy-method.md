@@ -10,7 +10,8 @@ publication_name: "loglass"
 # はじめに
 
 ログラスの小林([@mako-makok](https://twitter.com/mako_makok))です。
-ご存知の方も多いと思いますが、Kotlin の data class に自動的に生える copy method に対して、ArchUnit を使ったアプローチをご紹介します。
+ご存知の方も多いと思いますが、Kotlin の data class に自動生成される copy メソッドに対するアプローチをご紹介します。
+今回は ArchUnit を使ったアプローチをご紹介します。
 
 # Kotlin の data class の概要
 
@@ -186,8 +187,8 @@ class MailAddress private constructor (
 }
 ```
 
-この実装でも目的は達成されますが、Kotlin の良さが失われてしまいます。
-また頻繁に改修が入るクラスであれば、プロパティの拡張で`equals`や`hashCode`の実装漏れで同値チェックがすり抜けてしまう危険性もあります。
+この実装でも目的は達成されるものの、当たり前ですが data class のメリットを享受することが出来ません。
+特に、頻繁に改修が入るクラスであれば、プロパティの拡張で`equals`や`hashCode`の実装漏れで同値チェックがすり抜けてしまう危険性もあります。
 
 # ArchUnit で copy メソッドを抑制する
 
@@ -281,18 +282,24 @@ class DomainDataClassCannotUseCopyMethod {
 
 ```
 
-このテストメソッドを定義することで copy メソッドの乱用が制限されるため、下記のような interface 定義がより安全になります。
+このテストを定義することで copy メソッドの乱用が制限されるため、下記のような interface 定義が可能になります。
 
 ```kotlin
 sealed interface MailAddress {
     val value: String
-
-    private data class ValidatedMailAddress(
-        override val value: String
-    ): MailAddress
-
-    private data class UnValidatedMailAddress(
-        override val value: String
-    ): MailAddress
 }
+
+data class ValidatedMailAddress private constractor(
+    override val value: String
+): MailAddress
+
+data class UnValidatedMailAddress private constractor(
+    override val value: String
+): MailAddress
 ```
+
+# 最後に
+
+ArchUnit を使う力技になってしまうものの、data class の copy メソッドを問題に対するアプローチのご紹介でした。
+ログラス社では数ヶ月運用してみましたが、インタフェースがより直感的に記述できるようになったため、非常に効果を感じております。
+もしよろしければ参考にしていただけると幸いです！
