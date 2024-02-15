@@ -7,15 +7,21 @@ published: false
 publication_name: "loglass"
 ---
 
+:::message
+この記事は毎週必ず記事がでるテックブログ "Loglass Tech Blog Sprint"の 25 週目の記事です！
+1 年間連続達成まで 残り 28 週 となりました！
+:::
+
 # はじめに
 
 ログラスの小林([@mako-makok](https://twitter.com/mako_makok))です。
-ご存知の方も多いと思いますが、Kotlin の data class に自動生成される copy メソッドに対するアプローチをご紹介します。
+ご存知の方も多いと思いますが、Kotlin で data class 宣言をすると、copy というメソッドがそのクラスに対して自動生成されます。
+この data class は便利な反面、様々な問題があり、copy メソッドをどうにかして隠したいというニーズがあります。
 今回は ArchUnit を使ったアプローチをご紹介します。
 
-# Kotlin の data class の概要
+# Kotlin の data class 宣言で自動生成されるメソッド
 
-Kotlin には data class という機能があります。
+改めて、Kotlin には data class という機能があります。
 https://kotlinlang.org/docs/data-classes.html
 
 data class で宣言するだけで自動的に`equals`, `hashCode`, `toString`, `componentN`をよしなに実装してくれます。
@@ -53,7 +59,7 @@ fun main() {
 }
 ```
 
-非常に便利な反面、このメソッドがあることによってファクトリ関数を無視してインスタンスを作ることが可能になってしまいます。
+非常に便利な反面、このメソッドがあることによってファクトリ関数や、init ブロックを無視してインスタンスを作ることが可能になってしまいます。
 以下の実装だとコンストラクタは隠すことができますが、copy メソッドでメールアドレスのルールを突破できます。
 
 ```kotlin
@@ -72,9 +78,13 @@ fun main() {
 }
 ```
 
-# 回避策
+copy をコールすると内部的には自動生成された setter メソッドがコールされます。
+setter はインスタンスの再生成をしないので、init ブロックをすり抜けます。
 
-いくつか回避策はあります。
+ちなみにこの自動生成される copy メソッドの問題は公式の youtrack で長い間議論されています。
+https://youtrack.jetbrains.com/issue/KT-11914
+
+# 一般的な回避策
 
 ## 実装を interface で隠す
 
@@ -162,7 +172,7 @@ fun main(mailAddress: MailAddress) {
 
 ## data class を使わない
 
-元も子もないですが、思い切って data class を利用しないというのも 1 つの手です。
+元も子もありませんが、思い切って data class を利用しないというのも 1 つの手です。
 
 ```kotlin
 class MailAddress private constructor (
