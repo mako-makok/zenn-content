@@ -3,7 +3,8 @@ title: "ArchUnitでKotlinのdata classのcopyメソッドを禁止する"
 emoji: "📑"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["kotlin", "ArchUnit"]
-published: false
+published: true
+published_at: 2024-02-16 13:00 # 未来の日時を指定する
 publication_name: "loglass"
 ---
 
