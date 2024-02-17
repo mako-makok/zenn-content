@@ -60,7 +60,7 @@ fun main() {
 }
 ```
 
-非常に便利な反面、このメソッドがあることによってファクトリ関数や、init ブロックを無視してインスタンスを作ることが可能になってしまいます。
+非常に便利な反面、このメソッドがあることによってファクトリ関数を無視してインスタンスを作ることが可能になってしまいます。
 以下の実装だとコンストラクタは隠すことができますが、copy メソッドでメールアドレスのルールを突破できます。
 
 ```kotlin
@@ -69,6 +69,7 @@ data class MailAddress private constructor (
 ) {
     companion object {
         fun of(localPart: String, domain: String): MailAddress {
+            throw IllegalStateExcepton()
             return MailAddress("$localPart@$domain")
         }
     }
@@ -78,9 +79,6 @@ fun main() {
     MailAddress.of("a", "b").copy(value = "broke through")
 }
 ```
-
-copy をコールすると内部的には自動生成された setter メソッドがコールされます。
-setter はインスタンスの再生成をしないので、init ブロックをすり抜けます。
 
 ちなみにこの自動生成される copy メソッドの問題は公式の youtrack で長い間議論されています。
 https://youtrack.jetbrains.com/issue/KT-11914
