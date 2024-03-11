@@ -92,7 +92,7 @@ Kotlin には標準で Result が付属しています。
 
 Kotlin 1.5 以前は戻り値に指定できないという制約があったのですが、それ以降のバージョンでは普通に利用できます。
 
-標準の`Result`は似たようなことはできるのですが、いくつか問題があります。
+標準の`Result`は似たようなことができるのですが、いくつかの問題があります。
 
 ```kotlin
 fun div(a: Int, dividedBy: Int): Result<Int> {
@@ -293,7 +293,7 @@ fun List<Row>.toUsers(): List<Result<User, List<IllegalArgumentException>>> {
 
 # 終わりに
 
-身も蓋もありませんが、ライブラリ選定はプロジェクトの状況によって変わります。
+身も蓋もないですが、ライブラリ選定はプロジェクトの状況によって変わります。
 
 数ある中でも、`kotlin-result`は少ない導入コストで、Kotlin の課題を解決する OSS だと私は感じました。
 
